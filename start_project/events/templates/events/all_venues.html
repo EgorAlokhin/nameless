@@ -1,0 +1,50 @@
+{%extends 'events/base.html'%}
+{%block content%}
+<br><h1>all venes</h1>
+    {%for venue in list_venue%}
+    <div class="card">
+  <div class="card-header">
+      <a href="{%url 'show_venue' venue.id%}">{{venue.name}}</a>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+        <ul>
+      <li>address: {{venue.address}}</li>
+      <li>phone: {{venue.phone}}</li>
+      <li>web: {{venue.web}}<br></li>
+      <li>email: {{venue.email}}<br></li>
+  </ul>
+    </p>
+  </div>
+
+  <div class="card-header">
+      <a href="{%url 'delete_venue' venue.id%}" class="btn btn-outline-danger btn-sm">delete</a>
+      <a href="{%url 'update_venue' venue.id%}" class="btn btn-outline-secondary btn-sm">update</a>
+  </div>
+</div>
+<br>
+    {%endfor%}
+<br>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {%if list_venue.has_previous%}
+      <li class="page-item"><a class="page-link" href="?page={{list_venue.previous_page_number}}">Previous</a></li>
+      {%endif%}
+    {%for i in nums%}
+      {%if forloop.counter == list_venue.number%}
+        <li class="page-item disabled"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+      {%else%}
+    <li class="page-item"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+      {%endif%}
+      {%endfor%}
+    {%if list_venue.has_next%}
+      <li class="page-item"><a class="page-link" href="?page={{list_venue.next_page_number}}">Next</a></li>
+      {%endif%}
+  </ul>
+</nav>
+
+ {{list_venue.number}} of {{list_venue.paginator.num_pages}}
+
+<br><br><br><br>
+{%endblock%}

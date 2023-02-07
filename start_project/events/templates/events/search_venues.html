@@ -1,0 +1,27 @@
+{%extends 'events/base.html'%}
+{%block content%}
+<br><h1>uou searced for {{searched}}</h1>
+    {%for venue in venues%}
+    <div class="card">
+  <div class="card-header">
+      {{venue.name}}
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+        <ul>
+      <li>address: {{venue.address}}</li>
+      <li>phone: {{venue.phone}}</li>
+      <li>web: {{venue.web}}<br></li>
+      <li>email: {{venue.email}}<br></li>
+  </ul>
+    </p>
+  </div>
+
+  <div class="card-header">
+      <a href="{%url 'delete_venue' venue.id%}" class="btn btn-outline-danger btn-sm">delete</a>
+      <a href="{%url 'update_venue' venue.id%}" class="btn btn-outline-secondary btn-sm">update</a>
+  </div>
+</div>
+<br>
+    {%endfor%}
+{%endblock%}

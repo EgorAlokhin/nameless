@@ -1,0 +1,11 @@
+{%extends 'events/base.html'%}
+{%block content%}
+<center>
+<h1>{{my_data}} {{year}} {{month}}</h1>
+<a href="https://www.dupontregistry.com/autos/results/porsche/918--spyder">{{my_data}}</a>
+{{calen|safe}}
+{%for event in events%}
+    {{event.name}} {{event.venue.name}}<br>
+    {%endfor%}
+</center>
+{%endblock%}

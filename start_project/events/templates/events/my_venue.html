@@ -1,0 +1,28 @@
+{%extends 'events/base.html'%}
+{%block content%}
+<br>
+<br>
+{%for venue in my_venue%}
+    <div class="card">
+  <div class="card-header">
+      <a href="{%url 'show_venue' venue.id%}">{{venue.name}}</a>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+        <ul>
+      <li>address: {{venue.address}}</li>
+      <li>phone: {{venue.phone}}</li>
+      <li>web: {{venue.web}}<br></li>
+      <li>email: {{venue.email}}<br></li>
+  </ul>
+    </p>
+  </div>
+      </div>
+<br>
+      {%endfor%}
+<br>
+<br>
+<br>
+<br>
+<br>
+{%endblock%}
